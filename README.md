@@ -13,6 +13,19 @@ testing, Storybook, and modern frontend engineering practices.
 - 🤖 **GitHub Actions** — CI runs lint, tests, build, and Storybook on every PR
 - ♿ **WCAG-aware** — every component ships with keyboard support and ARIA
 
+## Components
+
+| Component                                   | Description                                                |
+| ------------------------------------------- | ---------------------------------------------------------- |
+| [Button](src/components/Button/README.md)   | Action control with variants, sizes, icons, loading state. |
+| [Input](src/components/Input/README.md)     | Accessible text field with labels, validation, icons.      |
+| [Card](src/components/Card/README.md)       | Content container with header/body/footer regions.         |
+| [Badge](src/components/Badge/README.md)     | Compact semantic status label with dot, pill, and icon.    |
+| [Spinner](src/components/Spinner/README.md) | Indeterminate progress indicator with a11y live region.    |
+
+Every component ships with typed props, tests, Storybook stories, a README,
+and a barrel `index.ts`.
+
 ## Quick start
 
 ```bash

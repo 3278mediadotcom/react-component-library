@@ -15,16 +15,16 @@ priority within each milestone.
 - [x] ThemeContext / ThemeProvider / useTheme
 - [x] Docs, CI, README, MIT license
 
-## Phase 1 — Core primitives
+## Phase 1 — Core primitives ✅
 
-- [ ] Button (variants, sizes, loading state, keyboard support)
-- [ ] Input (labeling, validation states, accessible error messaging)
-- [ ] Card (surface container, header/body/footer slots)
-- [ ] Badge (semantic tones)
-- [ ] Spinner (indeterminate progress, a11y `role="status"`)
+- [x] Button (variants, sizes, loading state, keyboard support)
+- [x] Input (labeling, validation states, accessible error messaging)
+- [x] Card (surface container, header/body/footer slots)
+- [x] Badge (semantic tones)
+- [x] Spinner (indeterminate progress, a11y `role="status"`)
 
-Each component ships with tests, Storybook stories, and an `index.ts` from the
-start.
+Each component ships with tests, Storybook stories, a README, and an `index.ts`
+from the start.
 
 ## Phase 2 — Selection & navigation
 
