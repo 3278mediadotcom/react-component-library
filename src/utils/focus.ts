@@ -1,8 +1,12 @@
 import { KEY } from './keyboard';
 
 /**
- * Returns the first and last focusable elements inside a container.
- * Used by list navigation and (later) focus trapping for overlays.
+ * Returns focusable elements inside a container.
+ *
+ * Note: jsdom does not implement layout (`offsetParent` is always null), so a
+ * visibility check would silently filter everything out in tests. The selector
+ * guards (`:not([disabled])`, `:not([tabindex="-1"])`) are sufficient for
+ * overlay scopes, which are conditionally rendered.
  */
 export function getFocusableElements(container: HTMLElement): HTMLElement[] {
   const selector = [
@@ -15,21 +19,7 @@ export function getFocusableElements(container: HTMLElement): HTMLElement[] {
     '[contenteditable="true"]',
   ].join(',');
 
-  return Array.from(container.querySelectorAll<HTMLElement>(selector)).filter(
-    (el) => el.offsetParent !== null || el === document.activeElement,
-  );
-}
-
-/**
- * Returns indices for first/last elements, or -1 when none are focusable.
- * Returns `{ first, last }` so any single focusable element yields both.
- */
-export function getFocusableBounds(container: HTMLElement): { first: number; last: number } {
-  const elements = getFocusableElements(container);
-  return {
-    first: elements.length > 0 ? 0 : -1,
-    last: elements.length > 0 ? elements.length - 1 : -1,
-  };
+  return Array.from(container.querySelectorAll<HTMLElement>(selector));
 }
 
 /**

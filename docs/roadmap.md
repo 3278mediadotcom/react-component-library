@@ -36,12 +36,14 @@ from the start.
 - [x] Pagination (ellipsis collapsing)
 - [x] Breadcrumb (aria-current="page")
 
-## Phase 3 — Feedback & overlays
+## Phase 3 — Feedback & overlays ✅
 
-- [ ] Alert / Toast
-- [ ] Modal / Dialog (focus trap, Escape handling)
-- [ ] Tooltip (hover + focus + keyboard)
-- [ ] Popover
+- [x] Alert (severity-based role selection)
+- [x] Toast provider system (auto-dismiss, pause-on-hover, stacking)
+- [x] Modal (portal, focus trap, ESC, backdrop, scroll lock, focus restore)
+- [x] Drawer (4 placements, shared overlay infra)
+- [x] Tooltip (hover delay + focus, placement, arrow)
+- [x] Popover (click outside, ESC, placement, portal)
 
 ## Phase 4 — Data & layout
 

@@ -29,6 +29,12 @@ testing, Storybook, and modern frontend engineering practices.
 | [Tabs](src/components/Tabs/README.md)             | Tab interface with roving tabindex and orientations.       |
 | [Pagination](src/components/Pagination/README.md) | Page navigation with ellipsis collapsing.                  |
 | [Breadcrumb](src/components/Breadcrumb/README.md) | Navigation aid with aria-current="page".                   |
+| [Alert](src/components/Alert/README.md)           | Inline message with severity-based live regions.           |
+| [Toast](src/components/Toast/README.md)           | Toast provider system with auto-dismiss + hover pause.     |
+| [Modal](src/components/Modal/README.md)           | Accessible dialog with portal, focus trap, scroll lock.    |
+| [Drawer](src/components/Drawer/README.md)         | Slide-in panel from any edge (4 placements).               |
+| [Tooltip](src/components/Tooltip/README.md)       | Accessible tooltip with delay, focus, placement, arrow.    |
+| [Popover](src/components/Popover/README.md)       | Positioned overlay for menus, forms, and cards.            |
 
 Every component ships with typed props, tests, Storybook stories, a README,
 and a barrel `index.ts`.
