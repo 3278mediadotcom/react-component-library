@@ -15,13 +15,20 @@ testing, Storybook, and modern frontend engineering practices.
 
 ## Components
 
-| Component                                   | Description                                                |
-| ------------------------------------------- | ---------------------------------------------------------- |
-| [Button](src/components/Button/README.md)   | Action control with variants, sizes, icons, loading state. |
-| [Input](src/components/Input/README.md)     | Accessible text field with labels, validation, icons.      |
-| [Card](src/components/Card/README.md)       | Content container with header/body/footer regions.         |
-| [Badge](src/components/Badge/README.md)     | Compact semantic status label with dot, pill, and icon.    |
-| [Spinner](src/components/Spinner/README.md) | Indeterminate progress indicator with a11y live region.    |
+| Component                                         | Description                                                |
+| ------------------------------------------------- | ---------------------------------------------------------- |
+| [Button](src/components/Button/README.md)         | Action control with variants, sizes, icons, loading state. |
+| [Input](src/components/Input/README.md)           | Accessible text field with labels, validation, icons.      |
+| [Card](src/components/Card/README.md)             | Content container with header/body/footer regions.         |
+| [Badge](src/components/Badge/README.md)           | Compact semantic status label with dot, pill, and icon.    |
+| [Spinner](src/components/Spinner/README.md)       | Indeterminate progress indicator with a11y live region.    |
+| [Select](src/components/Select/README.md)         | Accessible combobox with full keyboard support.            |
+| [Checkbox](src/components/Checkbox/README.md)     | Checkbox with indeterminate, labels, validation.           |
+| [RadioGroup](src/components/RadioGroup/README.md) | Radio group with roving tabindex and arrow keys.           |
+| [Switch](src/components/Switch/README.md)         | Accessible on/off toggle with icons and loading state.     |
+| [Tabs](src/components/Tabs/README.md)             | Tab interface with roving tabindex and orientations.       |
+| [Pagination](src/components/Pagination/README.md) | Page navigation with ellipsis collapsing.                  |
+| [Breadcrumb](src/components/Breadcrumb/README.md) | Navigation aid with aria-current="page".                   |
 
 Every component ships with typed props, tests, Storybook stories, a README,
 and a barrel `index.ts`.

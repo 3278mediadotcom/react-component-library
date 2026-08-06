@@ -4,6 +4,23 @@ import { Input } from './components/Input';
 import { Card } from './components/Card';
 import { Badge } from './components/Badge';
 import { Spinner } from './components/Spinner';
+import { Checkbox } from './components/Checkbox';
+import { Switch } from './components/Switch';
+import { RadioGroup } from './components/RadioGroup';
+import { Breadcrumb } from './components/Breadcrumb';
+import { Pagination } from './components/Pagination';
+import { Tabs } from './components/Tabs';
+import { Select } from './components/Select';
+
+const FRUITS = [
+  { value: 'apple', label: 'Apple' },
+  { value: 'banana', label: 'Banana' },
+  { value: 'cherry', label: 'Cherry' },
+  { value: 'date', label: 'Date' },
+];
+
+const SECTION_CLASS = 'mt-16';
+const HEADING_CLASS = 'text-2xl font-bold';
 
 export default function App() {
   return (
@@ -13,56 +30,101 @@ export default function App() {
           {/* Hero */}
           <section className="text-center">
             <Badge variant="primary" pill className="mb-6">
-              Foundation components · v0.1
+              12 production components · v0.2
             </Badge>
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
               React Component Library
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">
-              Production-ready React components built with TypeScript, accessibility, and testing.
+              Accessible, tested React components built with TypeScript, Tailwind CSS, and modern
+              frontend engineering practices.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <Button
-                onClick={() => go('input')}
-                leftIcon={
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                }
-              >
-                Get started
-              </Button>
-              <Button variant="outline" onClick={() => go('badges')}>
-                Browse components
+              <Button onClick={() => go('forms')}>Browse components</Button>
+              <Button variant="outline" onClick={() => go('navigation')}>
+                Navigation
               </Button>
             </div>
           </section>
 
-          {/* Input example */}
-          <section id="input" className="mt-20">
-            <h2 className="text-2xl font-bold">Input</h2>
-            <div className="mt-6 grid gap-6 sm:grid-cols-2">
-              <Input label="Name" placeholder="Ada Lovelace" helperText="Your display name." />
-              <Input
-                label="Email"
-                type="email"
-                required
-                defaultValue="ada@analytical.engine"
-                error="Please enter a valid email address."
+          {/* Navigation */}
+          <section id="navigation" className={SECTION_CLASS}>
+            <h2 className={HEADING_CLASS}>Navigation</h2>
+            <div className="mt-6">
+              <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Components' }]} />
+            </div>
+            <div className="mt-6">
+              <Tabs
+                label="Showcase tabs"
+                items={[
+                  {
+                    value: 'overview',
+                    label: 'Overview',
+                    content: (
+                      <p className="text-sm text-slate-600 dark:text-slate-300">Tab one content.</p>
+                    ),
+                  },
+                  {
+                    value: 'activity',
+                    label: 'Activity',
+                    content: (
+                      <p className="text-sm text-slate-600 dark:text-slate-300">
+                        Tab two content with more detail.
+                      </p>
+                    ),
+                  },
+                  {
+                    value: 'settings',
+                    label: 'Settings',
+                    content: (
+                      <p className="text-sm text-slate-600 dark:text-slate-300">
+                        Tab three content.
+                      </p>
+                    ),
+                  },
+                ]}
               />
             </div>
+            <div className="mt-6">
+              <Pagination pageCount={15} defaultPage={8} />
+            </div>
           </section>
 
-          {/* Badge examples */}
-          <section id="badges" className="mt-20">
-            <h2 className="text-2xl font-bold">Badges</h2>
+          {/* Forms */}
+          <section id="forms" className={SECTION_CLASS}>
+            <h2 className={HEADING_CLASS}>Forms</h2>
+            <div className="mt-6 grid gap-6 sm:grid-cols-2">
+              <Input label="Email" type="email" placeholder="ada@analytical.engine" />
+              <Select
+                options={FRUITS}
+                label="Favorite fruit"
+                required
+                placeholder="Select a fruit"
+                clearable
+              />
+            </div>
+            <div className="mt-6 flex flex-wrap items-start gap-8">
+              <RadioGroup
+                name="plan"
+                label="Billing plan"
+                options={[
+                  { value: 'starter', label: 'Starter' },
+                  { value: 'pro', label: 'Pro' },
+                  { value: 'enterprise', label: 'Enterprise', disabled: true },
+                ]}
+                defaultValue="pro"
+              />
+              <div className="flex flex-col gap-3">
+                <Checkbox label="Accept terms of service" />
+                <Checkbox label="Subscribe to newsletter" defaultChecked />
+                <Switch label="Dark mode" defaultChecked />
+              </div>
+            </div>
+          </section>
+
+          {/* Selection */}
+          <section id="selection" className={SECTION_CLASS}>
+            <h2 className={HEADING_CLASS}>Selection & Status</h2>
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <Badge variant="primary">Primary</Badge>
               <Badge variant="secondary">Secondary</Badge>
@@ -75,11 +137,17 @@ export default function App() {
                 Info
               </Badge>
             </div>
+            <div className="mt-6 flex items-center gap-4 rounded-lg border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+              <Spinner size="sm" />
+              <span className="text-sm text-slate-600 dark:text-slate-300">
+                Loading additional components…
+              </span>
+            </div>
           </section>
 
-          {/* Card + Spinner examples */}
-          <section className="mt-20">
-            <h2 className="text-2xl font-bold">Cards & Spinner</h2>
+          {/* Cards */}
+          <section className={SECTION_CLASS}>
+            <h2 className={HEADING_CLASS}>Layout</h2>
             <div className="mt-6 grid gap-6 sm:grid-cols-2">
               <Card
                 title="Pro plan"
@@ -106,12 +174,6 @@ export default function App() {
                   $48,290
                 </p>
               </Card>
-            </div>
-            <div className="mt-6 flex items-center gap-4 rounded-lg border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
-              <Spinner size="sm" />
-              <span className="text-sm text-slate-600 dark:text-slate-300">
-                Loading component examples…
-              </span>
             </div>
           </section>
 

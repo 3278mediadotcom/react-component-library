@@ -26,13 +26,15 @@ priority within each milestone.
 Each component ships with tests, Storybook stories, a README, and an `index.ts`
 from the start.
 
-## Phase 2 — Selection & navigation
+## Phase 2 — Selection & navigation ✅
 
-- [ ] Checkbox
-- [ ] RadioGroup
-- [ ] Select (custom, keyboard-navigable)
-- [ ] Tabs (roving tabindex)
-- [ ] Accordion
+- [x] Select (combobox with full keyboard support + type-ahead)
+- [x] Checkbox (indeterminate, labels, validation)
+- [x] RadioGroup (roving tabindex, arrow keys, orientation)
+- [x] Switch (role="switch", loading, icons)
+- [x] Tabs (roving tabindex, horizontal/vertical, disabled, icons)
+- [x] Pagination (ellipsis collapsing)
+- [x] Breadcrumb (aria-current="page")
 
 ## Phase 3 — Feedback & overlays
 
@@ -44,7 +46,6 @@ from the start.
 ## Phase 4 — Data & layout
 
 - [ ] Table (sortable, accessible)
-- [ ] Pagination
 - [ ] Grid / Flex layout utilities
 
 ## Phase 5 — Distribution
