@@ -27,11 +27,40 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Type check
+        run: npx tsc --noEmit
+
       - name: Unit tests
         run: npm run test
 
-      - name: Build
+      - name: Build showcase
         run: npm run build
 
       - name: Build Storybook
         run: npm run build-storybook
+
+  package-check:
+    name: Library Package Verification
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build library
+        run: npm run build:lib
+
+      - name: Create package tarball
+        run: npm pack
+
+      - name: Inspect package contents
+        run: node .github/scripts/check-package.js

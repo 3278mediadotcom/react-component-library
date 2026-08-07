@@ -89,7 +89,11 @@ Before opening a PR:
 - [ ] `npm run lint` passes
 - [ ] `npm run test` passes
 - [ ] `npm run build` passes
-- [ ] `npm run build-storybook` passes (CI runs all four)
+- [ ] `npm run build-storybook` passes
+- [ ] `npm run build:lib` passes (library artifact builds)
+- [ ] If the public API changed, `npm pack` + `node .github/scripts/check-package.js` pass
 - [ ] The new component has tests, stories, and an `index.ts`
 
-CI runs automatically on every PR; a green CI is required to merge.
+CI runs automatically on every PR and includes lint, type checking, unit tests,
+the showcase build, Storybook, and the library package smoke test. A green CI is
+required to merge.
