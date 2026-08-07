@@ -4,6 +4,7 @@
   "description": "Accessible, production-ready React component library built with TypeScript and Tailwind CSS.",
   "type": "module",
   "license": "MIT",
+  "private": false,
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",

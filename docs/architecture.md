@@ -73,16 +73,26 @@ Rules:
 
 ## Theming
 
-The library ships a `ThemeProvider` that:
+The library ships a complete design system in `dist/styles.css`, compiled from
+`src/index.css` (Tailwind CSS v4):
 
-- Reads the initial theme from `localStorage` (key `rc-library-theme`),
-  falling back to the OS `prefers-color-scheme`.
-- Toggles the `dark` class on `<html>` so Tailwind's class-based dark variant
-  applies.
-- Exposes `mode`, `setMode`, and `toggle` via `useTheme()`.
+- **Tokens** live in the source `@theme` block (`src/index.css`) and compile to
+  native CSS custom properties (`--color-*`, `--text-*`, `--radius-*`,
+  `--animate-*`, ...).
+- **Dark mode is automatic** — components ship `dark:` variants that activate
+  under `@media (prefers-color-scheme: dark)`. No host configuration needed.
+- **Custom animations** (modal, drawer, toast, skeleton, progress) declare
+  their keyframes in the theme and ship with the CSS.
+- A `ThemeProvider` + `useTheme()` source hook remains available for apps that
+  want a React-level `mode`/`toggle` API; it defaults to the OS preference.
 
-Design tokens live in `src/constants/` and map to the Tailwind palette, so any
-host application can re-theme the library by overriding CSS variables.
+Consumers can re-theme the library by overriding the CSS custom properties:
+
+```css
+:root {
+  --color-blue-600: #4f46e5;
+}
+```
 
 ## Testing strategy
 
@@ -93,12 +103,23 @@ host application can re-theme the library by overriding CSS variables.
 
 ## CI
 
-See `.github/workflows/ci.yml`. Every pull request runs:
+See `.github/workflows/ci.yml`. Two jobs run on every push/PR:
 
+**`lint-test-build`**:
 1. `npm run lint`
-2. `npm run test`
-3. `npm run build`
-4. `npm run build-storybook`
+2. `npx tsc --noEmit` (type check)
+3. `npm run test` (600 unit tests)
+4. `npm run build`
+5. `npm run build-storybook`
+
+**`package-check`** (library release verification):
+1. `npm run build:lib`
+2. `npm pack`
+3. `node .github/scripts/check-package.js` — validates required files exist and
+   no source/test/config files leak into the tarball.
+
+`.github/workflows/pages.yml` deploys the static Storybook build to GitHub
+Pages on every push to `main`.
 
 ## Commands
 

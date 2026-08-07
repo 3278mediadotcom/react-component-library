@@ -9,11 +9,25 @@ npm install @3278media/react-component-library
 ```
 
 [![CI](https://github.com/3278mediadotcom/react-component-library/actions/workflows/ci.yml/badge.svg)](https://github.com/3278mediadotcom/react-component-library/actions/workflows/ci.yml)
+[![Live Demo](https://img.shields.io/badge/Storybook-live%20demo-ff4785.svg)](https://3278mediadotcom.github.io/react-component-library/)
 [![npm version](https://img.shields.io/npm/v/@3278media/react-component-library.svg)](https://www.npmjs.com/package/@3278media/react-component-library)
 [![npm downloads](https://img.shields.io/npm/dw/@3278media/react-component-library.svg)](https://www.npmjs.com/package/@3278media/react-component-library)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue.svg)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18-61dafb.svg)](https://react.dev/)
+
+![Component Showcase](docs/images/component-showcase.png)
+
+---
+
+## Engineering Highlights
+
+- ✓ Built **29 accessible React components** across forms, navigation, feedback, data display, and layout
+- ✓ Designed **reusable overlay infrastructure** — portals, focus traps, scroll lock, escape handling
+- ✓ Implemented an **enterprise DataTable** — sorting, filtering, pagination, selection, column visibility, CSV export, server-side mode
+- ✓ Created a **complete npm distribution pipeline** — ESM bundle, generated types, compiled CSS, CI package verification
+- ✓ Achieved **600 passing tests** across 31 test files
+- ✓ Published a **fully typed TypeScript package** with protected exports and externalized React
 
 ---
 

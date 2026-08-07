@@ -13,12 +13,17 @@ For the full procedure, see [release-process.md](./release-process.md).
 
 ## Verification gates
 
+> **IMPORTANT — shared `dist/`**: the showcase build (`npm run build`) and the
+> library build (`npm run build:lib`) both write to `dist/`, so **always run
+> `npm run build:lib` last** (immediately before `npm pack`). `prepublishOnly`
+> already enforces this order on publish.
+
 - [ ] `npm run lint` — no ESLint errors
 - [ ] `npm test` — all unit tests pass
 - [ ] `npm run build` — showcase app builds
 - [ ] `npm run build-storybook` — Storybook builds
-- [ ] `npm run build:lib` — library dist is fresh (`index.js`, `index.d.ts`, `styles.css`)
-- [ ] `npm pack` — creates the tarball
+- [ ] `npm run build:lib` **LAST** — library dist is fresh (`index.js`, `index.d.ts`, `styles.css`) and not overwritten by the showcase build
+- [ ] `npm pack` — creates the tarball (run immediately after `build:lib`)
 - [ ] `node .github/scripts/check-package.js` — tarball contains required files, no leakage
 - [ ] Consumer validation: install the `.tgz` into `consumer-test/` and confirm imports, CSS, and types work
 
