@@ -64,3 +64,63 @@ export type { TooltipProps, TooltipPlacement } from './components/Tooltip';
 
 export { Popover } from './components/Popover';
 export type { PopoverProps, PopoverPlacement } from './components/Popover';
+
+// ---------- Phase 4: Data Display & Layout ----------
+
+export { Divider } from './components/Divider';
+export type { DividerProps, DividerOrientation, DividerVariant } from './components/Divider';
+
+export { Stack } from './components/Stack';
+export type { StackProps, StackDirection, StackSpacing, StackAlignment } from './components/Stack';
+
+export { Grid } from './components/Grid';
+export type { GridProps, GridSpacing, GridBreakpoints } from './components/Grid';
+
+export { Skeleton } from './components/Skeleton';
+export type { SkeletonProps, SkeletonVariant, SkeletonAnimation } from './components/Skeleton';
+
+export { Avatar } from './components/Avatar';
+export type { AvatarProps, AvatarShape, AvatarSize, AvatarStatus } from './components/Avatar';
+
+export { AvatarGroup } from './components/AvatarGroup';
+export type {
+  AvatarGroupProps,
+  AvatarGroupItem,
+  AvatarGroupSpacing,
+} from './components/AvatarGroup';
+
+export { Progress } from './components/Progress';
+export type { ProgressProps, ProgressVariant, ProgressSize } from './components/Progress';
+
+export { EmptyState } from './components/EmptyState';
+export type { EmptyStateProps } from './components/EmptyState';
+
+export { Accordion } from './components/Accordion';
+export type { AccordionProps, AccordionItem } from './components/Accordion';
+
+export { Table, TableHeaderCell, TableCell } from './components/Table';
+export type {
+  TableProps,
+  TableColumn,
+  TableSize,
+  TableAlignment,
+  TableHeaderCellProps,
+  TableCellProps,
+} from './components/Table';
+
+export { DataTable } from './components/DataTable';
+export type {
+  DataTableProps,
+  DataTableColumn,
+  DataTableAlignment,
+  DataTableVisibleColumn,
+} from './components/DataTable';
+
+// ---------- Shared hooks ----------
+
+export { useDebounce, useDebouncedCallback } from './hooks/useDebounce';
+export { useResizeObserver } from './hooks/useResizeObserver';
+export { useSorting } from './hooks/useSorting';
+export type { SortState, SortDirection } from './hooks/useSorting';
+export { usePagination } from './hooks/usePagination';
+export { useSelection } from './hooks/useSelection';

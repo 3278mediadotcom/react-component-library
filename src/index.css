@@ -97,4 +97,32 @@
       width: 0%;
     }
   }
+
+  /* Skeleton shimmer (used by the Skeleton component's wave variant). */
+  --animate-skeleton-wave: skeleton-wave 1.6s ease-in-out infinite;
+
+  @keyframes skeleton-wave {
+    0%,
+    100% {
+      opacity: 0.55;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  /* Indeterminate linear progress sweep (used by Progress). */
+  --animate-progress-indeterminate: progress-indeterminate 1.2s ease-in-out infinite;
+
+  @keyframes progress-indeterminate {
+    0% {
+      transform: translateX(-100%);
+    }
+    50% {
+      transform: translateX(150%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
 }

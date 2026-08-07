@@ -45,10 +45,23 @@ from the start.
 - [x] Tooltip (hover delay + focus, placement, arrow)
 - [x] Popover (click outside, ESC, placement, portal)
 
-## Phase 4 — Data & layout
+## Phase 4 — Data display & layout ✅
 
-- [ ] Table (sortable, accessible)
-- [ ] Grid / Flex layout utilities
+- [x] Table (semantic wrapper: density, stripes, hover, sticky header, footer)
+- [x] DataTable (flagship: sorting, filtering, pagination, selection,
+      loading/empty states, column visibility, CSV export, server-side mode,
+      controlled/uncontrolled)
+- [x] Accordion (single/multiple, controlled/uncontrolled, disabled, animations)
+- [x] Avatar (image → initials → icon fallback, status dot, shapes, sizes)
+- [x] AvatarGroup (overlap, overflow chip, optional tooltips)
+- [x] Progress (linear/circular, determinate/indeterminate, `role="progressbar"`)
+- [x] Skeleton (text/avatar/button/card/image, pulse/wave)
+- [x] EmptyState (illustration, title, description, actions)
+- [x] Divider (horizontal/vertical, centered label)
+- [x] Stack (flexbox layout primitive)
+- [x] Grid (responsive columns, auto-fit/fill, custom templates)
+- [x] Shared hooks (useSorting, usePagination, useSelection, useDebounce,
+      useResizeObserver)
 
 ## Phase 5 — Distribution
 
