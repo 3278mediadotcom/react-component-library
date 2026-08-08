@@ -65,17 +65,55 @@ All keyframes are included in the shipped CSS and respect
 
 ## Dark mode
 
-Dark mode is **automatic** — components ship `dark:` variants that activate
-under `@media (prefers-color-scheme: dark)`. No class toggling or configuration
-is required.
+Dark mode uses an **opt-in class-based strategy**. Components ship `dark:`
+variants that activate when a `.dark` class is present on the `<html>` element —
+the stylesheet registers this with `@custom-variant dark` in `src/index.css`.
+No OS-level `prefers-color-scheme` query is used, so light/dark does not depend
+on the user's system setting.
 
-If you control theming in your app with a class-based strategy instead, you can
-customize the stylesheet or override the relevant CSS custom properties under
-your own selector.
+### ThemeProvider
 
-## Customizing for your product
+The library ships a `ThemeProvider` that manages the theme for you:
 
-Three options, from lightest to heaviest touch:
+- Applies/removes the `.dark` class on `<html>` when the mode changes.
+- Seeds the initial mode from `localStorage`, then from
+  `window.matchMedia('(prefers-color-scheme: dark)')`, falling back to `light`.
+- Persists the user's choice to `localStorage` (`rc-library-theme` by default).
+
+Wrap your tree with it:
+
+```tsx
+import { ThemeProvider } from "@3278media/react-component-library";
+
+function App() {
+  return <ThemeProvider>{/* components */}</ThemeProvider>;
+}
+```
+
+Read or change the mode anywhere below the provider with `useTheme()`:
+
+```tsx
+import { useTheme } from "@3278media/react-component-library";
+
+function ThemeToggle() {
+  const { mode, toggle } = useTheme();
+  return (
+    <button onClick={toggle}>
+      Switch to {mode === "dark" ? "light" : "dark"}
+    </button>
+  );
+}
+```
+
+`ThemeProvider` accepts `initialMode` and `storageKey` props to customize the
+fallback theme and the persistence key.
+
+### Customizing for your product
+
+If you do not want to use the provider, you can drive the `.dark` class
+yourself (e.g. in a layout route or an inline script) — components will respond
+to whatever element toggles it. The remaining customization options are
+unchanged:
 
 1. **Override CSS variables** — recolor tokens via `:root` in your app CSS:
 

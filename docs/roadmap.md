@@ -63,16 +63,16 @@ from the start.
 - [x] Shared hooks (useSorting, usePagination, useSelection, useDebounce,
       useResizeObserver)
 
-## Phase 5 — Distribution
+## Phase 5 — Distribution ✅
 
-- [ ] Package entry points (`package.json` `exports` map)
-- [ ] Library build via Vite `lib` mode
-- [ ] `dist` artifacts + type declarations
-- [ ] Semantic versioning + changelog
+- [x] Package entry points (`package.json` `exports` map)
+- [x] Library build via Vite `lib` mode
+- [x] `dist` artifacts + type declarations
+- [x] Semantic versioning + changelog
 - [ ] npm publishing automation (GitHub Release → npm)
 
 ## Always
 
-- [ ] Maintain WCAG 2.1 AA compliance on every component
-- [ ] Keep story coverage in lockstep with feature work
+- [x] Maintain WCAG 2.1 AA compliance on every component
+- [x] Keep story coverage in lockstep with feature work
 - [ ] Keep visual regression testing (Playwright) green

@@ -1,5 +1,11 @@
 @import 'tailwindcss';
 
+/* Class-based dark mode: `dark:` variants activate when `.dark` is present on
+   <html>. The library's ThemeProvider toggles this class, so the stylesheet
+   must opt into the class strategy instead of Tailwind's default
+   prefers-color-scheme media query. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* Overlay entrance animations (Modal, Drawer, Toast). */
   --animate-overlay-in: overlay-in 200ms cubic-bezier(0.16, 1, 0.3, 1);

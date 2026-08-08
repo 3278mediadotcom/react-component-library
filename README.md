@@ -40,7 +40,7 @@ npm install @3278media/react-component-library
 - 📦 **ESM only** — tree-shakable output, React/React-dom externalized as peer dependencies
 - 📚 **Storybook 10** — living documentation, a11y and vitest integration
 - 🧪 **Vitest + React Testing Library** — behavior and accessibility test suites
-- 🌙 **Dark mode** — automatic via `prefers-color-scheme`
+- 🌙 **Dark mode** — opt-in class-based strategy via the included `ThemeProvider`
 
 ## Installation
 
@@ -99,7 +99,37 @@ The package ships a complete design system in `dist/styles.css`:
 - **Tailwind v4 theme** — `--color-*`, `--text-*`, `--radius-*`, `--animate-*` tokens
 - **Custom animations** — modal, drawer, toast, pop, skeleton-wave, and progress
   keyframes included with the theme
-- **Dark mode** — automatic via `prefers-color-scheme`; components ship `dark:` variants
+- **Dark mode** — opt-in class-based strategy. `dark:` variants activate when a
+  `.dark` class is present on `<html>`. The library ships a `ThemeProvider` that
+  toggles that class, syncs with `prefers-color-scheme` on first load, and
+  persists the choice to `localStorage`:
+
+  ```tsx
+  import { ThemeProvider } from "@3278media/react-component-library";
+  import "@3278media/react-component-library/styles.css";
+
+  function App() {
+    return (
+      <ThemeProvider>
+        {/* <Button />, <Modal />, ... */}
+      </ThemeProvider>
+    );
+  }
+  ```
+
+  The provider must wrap your tree for theme state to be available; any
+  descendant can read it with `useTheme()`:
+
+  ```tsx
+  import { useTheme } from "@3278media/react-component-library";
+
+  function ThemeToggle() {
+    const { mode, toggle } = useTheme();
+    return <button onClick={toggle}>Switch to {mode === "dark" ? "light" : "dark"}</button>;
+  }
+  ```
+
+  Without the provider, components render in light mode.
 
 | Token | Default | Purpose |
 | ----- | ------- | ------- |
@@ -170,8 +200,9 @@ The library ships **29 components** in five categories, plus shared hooks.
 
 ### Hooks
 
-The package also exports shared hooks: `useDebounce`, `useDebouncedCallback`,
-`useResizeObserver`, `useSorting`, `usePagination`, and `useSelection`.
+The package also exports shared hooks: `useTheme`, `useDebounce`,
+`useDebouncedCallback`, `useResizeObserver`, `useSorting`, `usePagination`, and
+`useSelection`.
 
 ## Accessibility
 

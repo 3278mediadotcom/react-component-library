@@ -59,7 +59,10 @@ export function Popover({
   }, []);
 
   useEscapeKey(close, open && closeOnEscape);
-  useClickOutside(triggerRef, close, open && closeOnOutsideClick);
+  // The panel renders in a portal (document.body), so it is not a DOM child of
+  // the trigger. Pass both refs so clicks inside the panel don't count as
+  // "outside" (which would close it on mousedown before click handlers run).
+  useClickOutside([triggerRef, panelRef], close, open && closeOnOutsideClick);
 
   if (!isValidElement(children)) return <>{children}</>;
 

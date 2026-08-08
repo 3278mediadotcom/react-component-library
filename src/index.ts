@@ -118,6 +118,11 @@ export type {
 
 // ---------- Shared hooks ----------
 
+export { useTheme } from './hooks/useTheme';
+export { ThemeProvider } from './providers/ThemeProvider';
+export type { ThemeProviderProps } from './providers/ThemeProvider';
+export type { ThemeMode, ThemeContextValue, ThemeStorage } from './types/theme';
+
 export { useDebounce, useDebouncedCallback } from './hooks/useDebounce';
 export { useResizeObserver } from './hooks/useResizeObserver';
 export { useSorting } from './hooks/useSorting';

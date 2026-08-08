@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, within } from '@testing-library/react';
 import type { ComponentProps } from 'react';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { Popover } from './Popover';
 
 function MenuPopover(props: Partial<ComponentProps<typeof Popover>> = {}) {
@@ -157,6 +157,36 @@ describe('Popover', () => {
     const profileButton = within(panel).getByRole('button', { name: 'Profile' });
     fireEvent.click(profileButton);
     expect(document.querySelector('[role="dialog"]')).toBeInTheDocument();
+  });
+
+  it('keeps the portal panel open on mousedown inside it (outside-click regression)', () => {
+    // Regression: the panel renders in a portal on document.body, so it is not a
+    // DOM descendant of the trigger. useClickOutside must treat the panel itself
+    // as "inside"; otherwise a real browser's mousedown (fired before click)
+    // closes the panel before the item's click handler can run.
+    const handleProfileClick = vi.fn();
+    render(
+      <Popover
+        content={
+          <div>
+            <button onClick={handleProfileClick}>Profile</button>
+          </div>
+        }
+      >
+        <button>Open menu</button>
+      </Popover>,
+    );
+    fireEvent.click(screen.getByRole('button', { name: 'Open menu' }));
+    const panel = document.querySelector('[role="dialog"]') as HTMLElement;
+    const profileButton = within(panel).getByRole('button', { name: 'Profile' });
+
+    // Real browsers fire mousedown before click; a buggy outside-click handler
+    // would close the panel here and unmount the button before click dispatch.
+    fireEvent.mouseDown(profileButton);
+    expect(document.querySelector('[role="dialog"]')).toBeInTheDocument();
+
+    fireEvent.click(profileButton);
+    expect(handleProfileClick).toHaveBeenCalledTimes(1);
   });
 
   it('positions with the requested placement classes', () => {
